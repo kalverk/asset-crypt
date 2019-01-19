@@ -2,6 +2,7 @@ from flask import request, Blueprint
 
 from ..service.encrypt import encrypt_image_to_png
 from ..util.file_utils import get_filename
+from ..util.message_utils import get_max_message
 from ..util.response_wrapper import wrap_as_json, wrap_as_file
 
 encrypt = Blueprint('encrypt', __name__)
@@ -18,4 +19,4 @@ def encrypt_file():
     message = request.form['message']
     filename = get_filename(file)
 
-    return wrap_as_file(encrypt_image_to_png(file, message), filename)
+    return wrap_as_file(encrypt_image_to_png(file, get_max_message(file, message)), filename)
