@@ -14,6 +14,6 @@ def create_app(env_name):
 
     @app.route('/', methods=['GET'])
     def index():
-        return 'Congratulations! Your first endpoint is workin'
+        return 'Application is running'
 
     return app
